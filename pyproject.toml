@@ -3,6 +3,7 @@ name = "Indicadores_siops"
 version = "0.1.0"
 description = ""
 homepage = "https://github.com/LuizAlexandre21/Indicadores_siops"
+repository = "https://github.com/LuizAlexandre21/Indicadores_siops"
 authors = ["Luiz Alexandre <luizalexandre21@outlook.com>"]
 
 [tool.poetry.dependencies]
