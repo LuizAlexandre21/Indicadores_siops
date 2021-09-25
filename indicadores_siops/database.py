@@ -1,10 +1,9 @@
 # Bibliotecas 
 from peewee import *
 from playhouse.db_url import connect 
-import os 
 
 # Estabelecendo conexão 
-database = connect("mysql+pymysql://alexandre:34340012@localhost:3306/Alerts_trends")
+database = connect("mysql://alexandre:34340012@localhost:3306/Data_saude")
 
 # Criando a classe de conexão mysql 
 class MySQLBitField(Field):
@@ -19,34 +18,48 @@ class BaseModel(Model):
         database = database 
 
 # Tabela de Capacidade do Municipio 
-class Indicador_de_Capacidade_do_Municipio(BaseModel):
+class IndicadorCapacidade(BaseModel):
     municipio = TextField()
     estado = TextField()
-    codigo = IntergerField()
-    ano = IntergerField()
+    codigo = IntegerField()
+    ano = IntegerField()
     Capacidade = FloatField()
 
     class Meta:
         table_name = "Indicador_de_Capacidade_do_Municipio" 
 
 # Indicadores de Dependência 
-class Indicadores_de_Dependência(BaseModel):
+class IndicadoresDependência(BaseModel):
     municipio = TextField()
     estado = TextField()
-    codigo = IntergerField()
-    ano = IntergerField()
+    codigo = IntegerField()
+    ano = IntegerField()
     Dependência_União = FloatField()
     Dependência_Estado = FloatField()
     class Meta:
         table_name = "Indicadores_de_Dependência"
 
 # Indicadores de Dependência do Sus 
-class Indicadores_de_Dependência_SUS(BaseModel):
+class IndicadoresDependênciaSUS(BaseModel):
     municipio = TextField()
     estado = TextField()
-    codigo = IntergerField()
-    ano = IntergerField()
+    codigo = IntegerField()
+    ano = IntegerField()
     Dependência_União = FloatField()
     Dependência_Estado = FloatField()
     class Meta:
         table_name = "Indicadores_de_Dependência_Sus"
+
+# Receitas de Apuração 
+class ReceitasApuração(BaseModel):
+    municipio = TextField()
+    codigo_Municipio = TextField()
+    estado = TextField()
+    ano = IntegerField() 
+    campo = IntegerField() 
+    previsao_inicial =  FloatField() 
+    previsão_atualizada = FloatField() 
+    Receitas_realizadas_Bimestre = FloatField() 
+    Receitas_realizadas_Porcentagem = FloatField() 
+    class Meta:
+        table_name = "Receitas_apuração_sps"
