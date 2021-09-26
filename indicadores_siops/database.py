@@ -26,6 +26,7 @@ class IndicadorCapacidade(BaseModel):
     Capacidade = FloatField()
 
     class Meta:
+        primary_key = False
         table_name = "Indicador_de_Capacidade_do_Municipio" 
 
 # Indicadores de Dependência 
@@ -62,4 +63,5 @@ class ReceitasApuração(BaseModel):
     Receitas_realizadas_Bimestre = FloatField() 
     Receitas_realizadas_Porcentagem = FloatField() 
     class Meta:
+        primary_key = False
         table_name = "Receitas_apuração_sps"
