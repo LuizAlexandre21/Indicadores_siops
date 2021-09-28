@@ -49,7 +49,7 @@ class IndicadoresDependênciaSUS(BaseModel):
     Dependência_União = FloatField()
     Dependência_Estado = FloatField()
     class Meta:
-        table_name = "Indicadores_de_Dependência_Sus"
+        table_name = "Indicadores_de_Dependência_SUS"
 
 # Receitas de Apuração 
 class ReceitasApuração(BaseModel):
