@@ -79,3 +79,16 @@ class ReceitasAdicionais(BaseModel):
     class Meta:
         primary_key =False
         table_name = 'Receitas_adicionais_financiamento'
+
+class Receitas_Recursos(BaseModel):
+    municipio = TextField()
+    codigo_Municipio = TextField()
+    estado = TextField()
+    ano = IntegerField() 
+    campo = IntegerField()  
+    Previsão_atualizada = FloatField() 
+    Receita_Realizada = FloatField()
+    Receita_orçada = FloatField()
+    class Meta:
+        primary_key = False 
+        table_name = "2_Receitas_Recursos"

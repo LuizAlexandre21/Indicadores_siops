@@ -20,3 +20,10 @@ codigo INT,
 ano INT,
 Dependência_União FLOAT,
 Dependência_Estado FLOAT);
+
+Create Table Indicador_de_Aplicação(
+municipio VARCHAR(100),
+estado VARCHAR(100),
+codigo INT,
+ano INT,
+ARS FLOAT);

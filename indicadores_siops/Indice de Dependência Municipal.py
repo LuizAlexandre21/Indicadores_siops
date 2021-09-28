@@ -2,6 +2,7 @@
 import pandas as pd 
 import numpy as np 
 from database import *
+
 # Importando dados da Apuração da Receita 
 data = ReceitasApuração.select()
 dados = pd.read_sql(data.sql()[0] % tuple(data.sql()[1]), database.connection())
