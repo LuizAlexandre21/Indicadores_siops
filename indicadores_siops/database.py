@@ -65,3 +65,17 @@ class ReceitasApuração(BaseModel):
     class Meta:
         primary_key = False
         table_name = "Receitas_apuração_sps"
+
+class ReceitasAdicionais(BaseModel):
+    municipio = TextField()
+    codigo_Municipio = TextField()
+    estado = TextField()
+    ano = IntegerField() 
+    campo = IntegerField() 
+    previsao_inicial =  FloatField() 
+    previsão_atualizada = FloatField() 
+    Receitas_realizadas_Bimestre = FloatField() 
+    Receitas_realizadas_Porcentagem = FloatField() 
+    class Meta:
+        primary_key =False
+        table_name = 'Receitas_adicionais_financiamento'
