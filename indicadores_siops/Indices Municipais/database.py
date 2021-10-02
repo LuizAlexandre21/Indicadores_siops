@@ -38,6 +38,7 @@ class IndicadoresDependência(BaseModel):
     Dependência_União = FloatField()
     Dependência_Estado = FloatField()
     class Meta:
+        primary_key =False
         table_name = "Indicadores_de_Dependência"
 
 # Indicadores de Dependência do Sus 
@@ -49,6 +50,7 @@ class IndicadoresDependênciaSUS(BaseModel):
     Dependência_União = FloatField()
     Dependência_Estado = FloatField()
     class Meta:
+        primary_key= False
         table_name = "Indicadores_de_Dependência_SUS"
 
 # Receitas de Apuração 
