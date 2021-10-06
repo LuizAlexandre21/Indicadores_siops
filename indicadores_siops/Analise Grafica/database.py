@@ -77,10 +77,21 @@ class IndicadoresSaúdeRegião(BaseModel):
         table_name = "Indicadores_Saúde_Região"
 
 class ClassificaçõesMunicipio(BaseModel):
-  Municipio = TextField()
-  Macroregião = TextField()
-  Região = TextField() 
-  IDH = TextField()
-  class Meta:
-      primary_key = False 
-      table_name = "Classificações_Municipios"
+    Municipio = TextField()
+    Macroregião = TextField()
+    Região = TextField() 
+    IDH = TextField()
+    class Meta:
+        primary_key = False 
+        table_name = "Classificações_Municipios"
+
+class Populacao(BaseModel):
+    UF = TextField()
+    codigo_munic = IntegerField(column_name='COD. MUNIC') 
+    municipio = TextField()
+    populacao_estimada = IntegerField() 
+    Ano  = TextField()
+    Codigo = TextField() 
+    class Meta:
+        primary_key = False
+        table_name = "Populacao"
