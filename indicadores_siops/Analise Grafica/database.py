@@ -81,9 +81,10 @@ class ClassificaçõesMunicipio(BaseModel):
     Macroregião = TextField()
     Região = TextField() 
     IDH = TextField()
+    Porte = TextField()
     class Meta:
         primary_key = False 
-        table_name = "Classificações_Municipios"
+        table_name = "agregação"
 
 class Populacao(BaseModel):
     UF = TextField()
