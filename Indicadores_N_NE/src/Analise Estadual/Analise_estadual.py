@@ -21,9 +21,10 @@ def deflação(serie):
         if ano not in ['Estado','IDH','Porte','Região']:
             lista = []  
             for series in serie[ano]:
-                lista.append(series*inflação[ano])
+                lista.append(series*(inflação['2019']/inflação[ano]))
             deflation[ano]= lista
-        
+        else:
+            deflation[ano]= serie[ano]
     return(deflation)
 
 # Exportando os dados para csv 
@@ -157,7 +158,7 @@ for estado in ['Acre','Amapá','Amazonas','Roraima','Rondônia','Pará','Tocanti
 
 
 # Exportando os dados
-list_csv(deflação(tabela),'Receita Total per capita - Norte')
+list_csv(tabela,'Receita Total per capita - Norte')
 
 # 6 Receita Total por Estado da Região Nordeste para apuração da aplicação em ações e serviços públicos de saúde, no agregado de 2013 a 2019, per capita.
 # Receita Estadual Total
@@ -173,7 +174,7 @@ for estado in ['Bahia','Ceará','Piauí','Maranhão','Rio Grande do Norte','Para
     tabela['Estado'].append(estado)
 
 # Exportando os dados
-list_csv(deflação(tabela),'Receita Total per capita - Nordeste')
+list_csv(tabela,'Receita Total per capita - Nordeste')
 
 # 7 Receita Total por IDH por estados da Região Nordeste e Norte para apuração da aplicação em ações e serviços públicos de saúde, no agregado de 2013 a 2019, per capita.
 tabela={'IDH':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
@@ -193,7 +194,7 @@ for IDH in ['Médio','Alto','Muito Alto']:
         except Exception as e:
             print(e)
     tabela['IDH'].append(IDH)
-list_csv(deflação(tabela),'Receita Total per capita - IDH')
+list_csv(tabela,'Receita Total per capita - IDH')
 
 
 # 8 Receita Total por Porte por estados da Região Nordeste e Norte para apuração da aplicação em ações e serviços públicos de saúde, no agregado de 2013 a 2019, per capita.
@@ -213,7 +214,7 @@ for Porte in ['1000000','5000000','10000000','15000000','20000000']:
         except Exception as e:
             tabela[str(anos)].append(0)
     tabela['Porte'].append(Porte)
-list_csv(deflação(tabela),'Receita Total per capita - Porte')
+list_csv(tabela,'Receita Total per capita - Porte')
 
 # 9 Receita líquida de impostos das Regiões Norte/Nordeste, 2013 a 2019, em milhões de reais
 # Receita Estadual liquido
@@ -287,7 +288,7 @@ for estado in ['Acre','Amapá','Amazonas','Roraima','Rondônia','Pará','Tocanti
     tabela['Estado'].append(estado)
 
 # Exportando os dados
-list_csv(deflação(tabela),'Receita liquida per capita - Norte')
+list_csv(tabela,'Receita liquida per capita - Norte')
 
 # 14 Receita líquida estadual de impostos dos estados da Região Nordeste, no agregado de 2013 a 2019, per capita
 # Receita Estadual liquida
@@ -303,7 +304,7 @@ for estado in ['Bahia','Ceará','Piauí','Maranhão','Rio Grande do Norte','Para
     tabela['Estado'].append(estado)
 
 # Exportando os dados
-list_csv(deflação(tabela),'Receita liquida per capita - Nordeste')
+list_csv(tabela,'Receita liquida per capita - Nordeste')
 
 # 15 Receita líquida estadual de impostos por IDH dos estados da Região Norte e Nordeste, no agregado de 2013 a 2019, per capita
 tabela={'IDH':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
@@ -323,7 +324,7 @@ for IDH in ['Médio','Alto','Muito Alto']:
     tabela['IDH'].append(IDH)
 
 # Exportando os dados
-list_csv(deflação(tabela),'Receita liquida per capita - IDH')
+list_csv(tabela,'Receita liquida per capita - IDH')
 
 # 16 Receita líquida estadual de impostos por Porte dos estados da Região Norte e Nordeste, no agregado de 2013 a 2019, per capita
 tabela={'Porte':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
@@ -343,7 +344,7 @@ for Porte in ['1000000','5000000','10000000','15000000','20000000']:
     tabela['Porte'].append(Porte)
 
 # Exportando os dados
-list_csv(deflação(tabela),'Receita liquida per capita - Porte')
+list_csv(tabela,'Receita liquida per capita - Porte')
 
 # 17 – Receita de Transferências Constitucionais e Legais da União para os Estados da Região Norte, 2013 a 2019, em milhões de reais.
 tabela={'Estado':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
@@ -357,7 +358,7 @@ for estado in ['Acre','Amapá','Amazonas','Roraima','Rondônia','Pará','Tocanti
     tabela['Estado'].append(estado)
 
 # Exportando os dados
-list_csv(deflação(tabela),'Receita de transferência constitucional e legais - Norte')
+list_csv(tabela,'Receita de transferência constitucional e legais - Norte')
 
 # 18 - Receita de Transferências Constitucionais e Legais da União para os Estados da Região Nordeste, 2013 a 2019, em milhões de reais.
 tabela={'Estado':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
@@ -371,7 +372,7 @@ for estado in ['Bahia','Ceará','Piauí','Maranhão','Rio Grande do Norte','Para
     tabela['Estado'].append(estado)
 
 # Exportando os dados
-list_csv(deflação(tabela),'Receita de transferência constitucional e legais - Nordeste')
+list_csv(tabela,'Receita de transferência constitucional e legais - Nordeste')
 
 # 19 - Receita de Transferências Constitucionais e Legais da União por IDH dos Estados da Região Nordeste, 2013 a 2019, em milhões de reais.
 tabela={'IDH':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
@@ -385,7 +386,7 @@ for IDH in ['Médio','Alto','Muito Alto']:
         tabela[str(anos)].append(sum(numerador)/1000000)
     tabela['IDH'].append(IDH)
 
-list_csv(deflação(tabela),'Receita de transferência constitucional e legais - IDH')
+list_csv(tabela,'Receita de transferência constitucional e legais - IDH')
 
 # 20 - Receita de Transferências Constitucionais e Legais da União por IDH dos Estados da Região Nordeste, 2013 a 2019, em milhões de reais.
 tabela={'Porte':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
@@ -415,7 +416,7 @@ for estado in ['Acre','Amapá','Amazonas','Roraima','Rondônia','Pará','Tocanti
     tabela['Estado'].append(estado)
 
 # Exportando os dados
-list_csv(deflação(tabela),'Receita de transferência constitucional e legais per capita - Norte')
+list_csv(tabela,'Receita de transferência constitucional e legais per capita - Norte')
 
 # 22 Receita de Transferências Constitucionais e Legais da União para os Estados da Região Nordeste, 2013 a 2019, per capita.
 tabela={'Estado':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
@@ -430,7 +431,7 @@ for estado in ['Bahia','Ceará','Piauí','Maranhão','Rio Grande do Norte','Para
     tabela['Estado'].append(estado)
 
 # Exportando os dados
-list_csv(deflação(tabela),'Receita de transferência constitucional e legais per capita - Nordeste')
+list_csv(tabela,'Receita de transferência constitucional e legais per capita - Nordeste')
 
 # 23 - Receita de Transferências Constitucionais e Legais da União por IDH dos Estados da Região Nordeste, 2013 a 2019, em milhões de reais per capita. 
 tabela={'IDH':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
@@ -449,7 +450,7 @@ for IDH in ['Médio','Alto','Muito Alto']:
             tabela[str(anos)].append(0)
     tabela['IDH'].append(IDH)
 
-list_csv(deflação(tabela),'Receita de transferência constitucional e legais - IDH')
+list_csv(tabela,'Receita de transferência constitucional e legais - IDH')
 
 # 24 - Receita de Transferências Constitucionais e Legais da União por Porte dos Estados da Região Nordeste, 2013 a 2019, em milhões de reais.
 tabela={'Porte':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
@@ -467,7 +468,7 @@ for Porte in ['1000000','5000000','10000000','15000000','20000000']:
             tabela[str(anos)].append(0)
     tabela['Porte'].append(Porte)
 
-list_csv(deflação(tabela),'Receita de transferência constitucional e legais - Porte')
+list_csv(tabela,'Receita de transferência constitucional e legais - Porte')
 
 # 25 Percentual médio da receita líquida de impostos na receita total dos estados da Região Norte, no agregado de 2013 a 2019
 tabela={'Estado':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
@@ -483,7 +484,7 @@ for estado in ['Acre','Amapá','Amazonas','Roraima','Rondônia','Pará','Tocanti
     tabela['Estado'].append(estado)
 
 # Exportando os dados
-list_csv(deflação(tabela),'Indicador Capacidade - Norte')
+list_csv(tabela,'Indicador Capacidade - Norte')
 
 # 26 Percentual médio da receita líquida de impostos na receita total dos estados da Região Nordeste, no agregado de 2013 a 2019
 tabela={'Estado':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
@@ -499,7 +500,7 @@ for estado in ['Bahia','Ceará','Piauí','Maranhão','Rio Grande do Norte','Para
     tabela['Estado'].append(estado)
 
 # Exportando os dados
-list_csv(deflação(tabela),'Indicador Capacidade - Nordeste')
+list_csv(tabela,'Indicador Capacidade - Nordeste')
 
 # 27 Percentual médio da receita líquida de impostos na receita total por IDH dos estados da Região Norte e Nordeste, no agregado de 2013 a 2019
 tabela={'IDH':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
@@ -518,7 +519,7 @@ for IDH in ['Médio','Alto','Muito Alto']:
         except:
             tabela[str(anos)].append(0)
     tabela['IDH'].append(IDH)
-list_csv(deflação(tabela),'Indicador Capacidade - IDH')
+list_csv(tabela,'Indicador Capacidade - IDH')
 
 # 28 Percentual médio da receita líquida de impostos na receita total dos estados da Região Nordeste, no agregado de 2013 a 2019
 tabela={'Porte':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
@@ -538,7 +539,7 @@ for Porte in ['1000000','5000000','10000000','15000000','20000000']:
             tabela[str(anos)].append(0)
     tabela['Porte'].append(Porte)
 
-list_csv(deflação(tabela),'Indicador Capacidade - Porte')
+list_csv(tabela,'Indicador Capacidade - Porte')
 
 # 29 - Percentual Médio da receita de transferências na receita total dos estados da Região Norte, no agregado de 2013 a 2019
 tabela={'Estado':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
@@ -554,7 +555,7 @@ for estado in ['Acre','Amapá','Amazonas','Roraima','Rondônia','Pará','Tocanti
     tabela['Estado'].append(estado)
 
 # Exportando os dados
-list_csv(deflação(tabela),'Indicador Dependencia - Norte')
+list_csv(tabela,'Indicador Dependencia - Norte')
 
 # 30 - Percentual Médio da receita de transferências na receita total dos estados da Região Norte, no agregado de 2013 a 2019 
 tabela={'Estado':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
@@ -568,7 +569,7 @@ for estado in ['Bahia','Ceará','Piauí','Maranhão','Rio Grande do Norte','Para
                 denominador = int(dados['Receitas_realizadas_Bimestre'])
                 tabela[str(dados['Ano'])].append(round(numerador/denominador,2))
     tabela['Estado'].append(estado)
-list_csv(deflação(tabela),'Indicador Dependencia - Nordeste')
+list_csv(tabela,'Indicador Dependencia - Nordeste')
 
 # 31 - Percentual Médio da receita de transferências na receita total dos estados da Região Norte e Nortdeste - IDH, no agregado de 2013 a 2019 
 tabela={'IDH':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
@@ -587,7 +588,8 @@ for IDH in ['Médio','Alto','Muito Alto']:
         except:
             tabela[str(anos)].append(0)
     tabela['IDH'].append(IDH)
-list_csv(deflação(tabela),'Indicador Dependencia - IDH')
+list_csv(tabela,'Indicador Dependencia - IDH')
+
 # 32 - Percentual Médio da receita de transferências na receita total dos estados da Região Norte e Nortdeste - Porte, no agregado de 2013 a 2019 
 tabela={'Porte':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
 
@@ -605,7 +607,7 @@ for Porte in ['1000000','5000000','10000000','15000000','20000000']:
         except:
             tabela[str(anos)].append(0)
     tabela['Porte'].append(Porte)
-list_csv(deflação(tabela),'Indicador Dependencia - Porte')
+list_csv(tabela,'Indicador Dependencia - Porte')
 
 # 33 - Percentual Médio da receita de transferências na receita total dos estados da Região Norte, no agregado de 2013 a 2019 
 tabela={'Estado':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
@@ -621,71 +623,9 @@ for estado in ['Bahia','Ceará','Piauí','Maranhão','Rio Grande do Norte','Para
     tabela['Estado'].append(estado)
 
 # Exportando os dados
-list_csv(deflação(tabela),'Indicador Dependencia - Nordeste')
+list_csv(tabela,'Indicador Dependencia - Nordeste')
 
-# 34 - Receitas adicionais vinculadas ao SUS dos Estados da Região Nordeste, no agregado de 2013 a 2019, em milhões de reais
-tabela={'Estado':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
-
-for estado in ['Bahia','Ceará','Piauí','Maranhão','Rio Grande do Norte','Paraíba','Pernambuco','Sergipe','Alagoas']:
-    for dados in Adicionais_Nordeste:
-        if dados['Estado'] == estado:
-            if dados['campo'] == 'Provenientes da União':
-                numerador = dados['Receitas_realizadas_Bimestre']
-                tabela[str(dados['Ano'])].append(numerador/1000000)
-    tabela['Estado'].append(estado)
-
-# 35 - Receitas adicionais vinculadas ao SUS dos Estados da Região Norte, no agregado de 2013 a 2019, em milhões de reais per capita
-tabela={'IDH':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
-for IDH in ['Médio','Alto','Muito Alto']:    
-    for anos in range(2013,2020):
-        numerador=[] 
-        denominador=[]
-        for dados in Adicionais_Norte_Nordeste:
-            if dados['campo'] =='Provenientes da União' and dados['Ano']==anos and dados['IDH']==IDH:
-                numerador.append(dados['Receitas_realizadas_Bimestre'])
-                denominador.append(int(dados['População']))
-        try:
-            tabela[str(anos)].append(round(sum(numerador)/sum(denominador),2))
-        except:
-            tabela[str(anos)].append(0)
-    tabela['IDH'].append(IDH)
-
-list_csv(deflação(tabela),'Indicador Dependencia Sus per capita - IDH')
-
-# 36 - Receitas adicionais vinculadas ao SUS dos Estados da Região Norte, no agregado de 2013 a 2019, em milhões de reais per capita
-tabela={'Porte':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
-
-for Porte in ['1000000','5000000','10000000','15000000','20000000']:   
-    for anos in range(2013,2020):
-        numerador=[] 
-        denominador=[]
-        for dados in Adicionais_Norte_Nordeste:
-            if dados['campo'] =='Provenientes da União' and dados['Ano']==anos and dados['Porte']==Porte:
-                numerador.append(dados['Receitas_realizadas_Bimestre'])
-                denominador.append(int(dados['População']))
-        try:
-            tabela[str(anos)].append(round(sum(numerador)/sum(denominador),2))
-        except:
-            tabela[str(anos)].append(0)
-    tabela['Porte'].append(Porte)
-
-list_csv(deflação(tabela),'Indicador Dependencia Sus per capita - Porte')
-
-# 37 - Receitas adicionais vinculadas ao SUS dos Estados da Região Nordeste, no agregado de 2013 a 2019, em milhões de reais
-tabela={'Estado':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
-
-for estado in ['Bahia','Ceará','Piauí','Maranhão','Rio Grande do Norte','Paraíba','Pernambuco','Sergipe','Alagoas']:
-    for dados in Adicionais_Nordeste:
-        if dados['Estado'] == estado:
-            if dados['campo'] == 'Provenientes da União':
-                numerador = dados['Receitas_realizadas_Bimestre']
-                denominador = int(dados['População'])
-                tabela[str(dados['Ano'])].append(round(numerador/denominador,2))
-    tabela['Estado'].append(estado)
-
-list_csv(deflação(tabela),'Indicador Dependencia Sus per capita - Nordeste')
-
-# 38 - Receitas adicionais vinculadas ao SUS dos Estados da Região Norte, no agregado de 2013 a 2019, em milhões de reais per capita
+# 34 - Receitas adicionais vinculadas ao SUS dos Estados da Região Norte, no agregado de 2013 a 2019, em milhões de reais per capita
 tabela={'IDH':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
 for IDH in ['Médio','Alto','Muito Alto']:    
     for anos in range(2013,2020):
@@ -702,7 +642,83 @@ for IDH in ['Médio','Alto','Muito Alto']:
 
 list_csv(deflação(tabela),'Indicador Dependencia Sus - IDH')
 
-# 39 - Receitas adicionais vinculadas ao SUS dos Estados da Região Norte, no agregado de 2013 a 2019, em milhões de reais per capita
+# 35 - Receitas adicionais vinculadas ao SUS dos Estados da Região Norte, no agregado de 2013 a 2019, em milhões de reais per capita
+tabela={'Porte':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
+
+for Porte in ['1000000','5000000','10000000','15000000','20000000']:   
+    for anos in range(2013,2020):
+        numerador=[] 
+        denominador=[]
+        for dados in Adicionais_Norte_Nordeste:
+            if dados['campo'] =='Provenientes da União' and dados['Ano']==anos and dados['Porte']==Porte:
+                numerador.append(dados['Receitas_realizadas_Bimestre']),
+        try:
+            tabela[str(anos)].append(sum(numerador)/1000000)
+        except:
+            tabela[str(anos)].append(0)
+    tabela['Porte'].append(Porte)
+
+list_csv(deflação(tabela),'Indicador Dependencia Sus - Porte')
+
+# 36 – Receita líquida de impostos das Regiões Norte/Nordeste, 2013 a 2019, em milhões de reais.
+tabela={'Região':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
+
+for ano in range(2013,2020):
+    Numerador =[]
+    Denominador =[]
+    for dados in list(Apuração_Nordeste):
+        if dados['Ano'] == ano :
+            if dados['campo'] == 'RECEITA DE IMPOSTOS LÍQUIDA (I)':
+                Numerador.append(dados['Receitas_realizadas_Bimestre'])
+                Denominador.append(int(dados['População']))
+
+    tabela[str(ano)].append(sum(Numerador)/1000000)
+tabela['Região'].append('Nordeste')
+
+
+for ano in range(2013,2020):
+    Numerador =[]
+    Denominador =[]
+    for dados in list(Apuração_Norte):
+        if dados['Ano'] == ano :
+            if dados['campo'] == 'RECEITA DE IMPOSTOS LÍQUIDA (I)':
+                Numerador.append(dados['Receitas_realizadas_Bimestre'])
+                Denominador.append(int(dados['População']))
+
+    tabela[str(ano)].append(sum(Numerador)/1000000)
+tabela['Região'].append('Norte')
+
+list_csv(deflação(tabela),'Receita líquida de impostos das Regiões Norte_Nordeste')
+
+# 37 – Receita de Transferências Constitucionais e Legais da União das Regiões Norte/Nordeste, 2013 a 2019, em milhões de reais.
+tabela={'Região':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
+
+for ano in range(2013,2020):
+    Numerador =[]
+    Denominador =[]
+    for dados in list(Apuração_Nordeste):
+        if dados['Ano'] == ano :
+            if dados['campo'] == 'RECEITA DE TRANSFERÊNCIAS CONSTITUCIONAIS E LEGAIS (II)':
+                Numerador.append(dados['Receitas_realizadas_Bimestre'])
+                Denominador.append(int(dados['População']))
+
+    tabela[str(ano)].append(sum(Numerador)/1000000)
+tabela['Região'].append('Nordeste')
+
+for ano in range(2013,2020):
+    Numerador =[]
+    for dados in list(Apuração_Norte):
+        if dados['Ano'] == ano :
+            if dados['campo'] == 'RECEITA DE TRANSFERÊNCIAS CONSTITUCIONAIS E LEGAIS (II)':
+                Numerador.append(dados['Receitas_realizadas_Bimestre'])
+
+    tabela[str(ano)].append(sum(Numerador)/1000000)
+tabela['Região'].append('Norte')
+
+list_csv(deflação(tabela),'Receita líquida de impostos das Regiões Norte_Nordeste')
+
+
+# 38 - Valores de Receitas Adicionais (SUS) 
 tabela={'Porte':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
 
 for Porte in ['1000000','5000000','10000000','15000000','20000000']:   
@@ -720,59 +736,119 @@ for Porte in ['1000000','5000000','10000000','15000000','20000000']:
 
 list_csv(deflação(tabela),'Indicador Dependencia Sus - Porte')
 
-# 40 – Receita líquida de impostos das Regiões Norte/Nordeste, 2013 a 2019, em milhões de reais.
-tabela={'Região':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
 
-for ano in range(2013,2020):
-    Numerador =[]
-    Denominador =[]
-    for dados in list(Apuração_Nordeste):
-        if dados['Ano'] == ano :
-            if dados['campo'] == 'RECEITA DE IMPOSTOS LÍQUIDA (I)':
-                Numerador.append(dados['Receitas_realizadas_Bimestre'])
-                Denominador.append(int(dados['População']))
+# 39 - Receita total do SUS da Região Norte, 2013 a 2019, em milhões de reais
+tabela={'Estado':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
 
-    tabela[str(ano)].append(sum(Numerador)/1000000)
-tabela['Região'].append('Nordeste')
+for Estado in ['Acre','Amapá','Amazonas','Roraima','Rondônia','Pará','Tocantins']:   
+    for anos in range(2013,2020):
+        numerador=[] 
+        for dados in Adicionais_Norte:
+            if dados['campo'] =='TOTAL RECEITAS ADICIONAIS PARA FINANCIAMENTO DA SAÚDE' and dados['Ano']==anos and dados['Estado']==Estado:
+                numerador.append(dados['Receitas_realizadas_Bimestre'])
+        
+        tabela[str(anos)].append(sum(numerador)/1000000)
+    tabela['Estado'].append(Estado)
+
+list_csv(deflação(tabela),'Receita Total do SUS - Região Norte')
+
+# 40 - Receita total do SUS da Região Norte, 2013 a 2019, em milhões de reais
+tabela={'Estado':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
+
+for Estado in ['Bahia','Ceará','Piauí','Maranhão','Rio Grande do Norte','Paraíba','Pernambuco','Sergipe','Alagoas']:
+    for anos in range(2013,2020):
+        numerador=[] 
+        for dados in Adicionais_Norte:
+            if dados['campo'] =='TOTAL RECEITAS ADICIONAIS PARA FINANCIAMENTO DA SAÚDE' and dados['Ano']==anos and dados['Estado']==Estado:
+                numerador.append(dados['Receitas_realizadas_Bimestre']) 
+        tabela[str(anos)].append(sum(numerador)/1000000)
+    tabela['Estado'].append(Estado)
+
+list_csv(deflação(tabela),'Receita Total do SUS - Região Nordeste')
+
+# 41 - Indicador de Dependência do Sus da Região Norte, 2013 a 2019, em milhões de reais
+tabela={'Estado':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
+
+for Estado in ['Acre','Amapá','Amazonas','Roraima','Rondônia','Pará','Tocantins']:
+    for anos in range(2013,2020):
+        numerador=[] 
+        denominador=[]
+        for dados in Adicionais_Norte:
+            if dados['campo'] == 'Provenientes da União' and dados['Ano']==anos and dados['Estado']== Estado:
+                numerador.append(dados['Receitas_realizadas_Bimestre'])
+            elif dados['campo'] =='TOTAL RECEITAS ADICIONAIS PARA FINANCIAMENTO DA SAÚDE' and dados['Ano']==anos and dados['Estado']==Estado:
+                denominador.append(dados['Receitas_realizadas_Bimestre'])
+        try:
+            tabela[str(anos)].append(round(sum(numerador)/sum(denominador),2))
+        except:
+            tabela[str(anos)].append(0)
+
+    tabela['Estado'].append(Estado)
+
+list_csv(tabela,'Indicador de Dependência do Sus 1 - Região Norte')
 
 
-for ano in range(2013,2020):
-    Numerador =[]
-    Denominador =[]
-    for dados in list(Apuração_Norte):
-        if dados['Ano'] == ano :
-            if dados['campo'] == 'RECEITA DE IMPOSTOS LÍQUIDA (I)':
-                Numerador.append(dados['Receitas_realizadas_Bimestre'])
-                Denominador.append(int(dados['População']))
+# 42 - Indicador de Dependência do Sus da Região Nordeste, 2013 a 2019, em milhões de reais
+tabela={'Estado':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
 
-    tabela[str(ano)].append(sum(Numerador)/1000000)
-tabela['Região'].append('Norte')
+for Estado in ['Bahia','Ceará','Piauí','Maranhão','Rio Grande do Norte','Paraíba','Pernambuco','Sergipe','Alagoas']:
+    for anos in range(2013,2020):
+        numerador=[] 
+        denominador=[]
+        for dados in Adicionais_Nordeste:
+            if dados['campo'] == 'Provenientes da União' and dados['Ano']==anos and dados['Estado']== Estado:
+                numerador.append(dados['Receitas_realizadas_Bimestre'])
+            elif dados['campo'] =='TOTAL RECEITAS ADICIONAIS PARA FINANCIAMENTO DA SAÚDE' and dados['Ano']==anos and dados['Estado']==Estado:
+                denominador.append(dados['Receitas_realizadas_Bimestre'])
+        try:
+            tabela[str(anos)].append(round(sum(numerador)/sum(denominador),2))
+        except:
+            tabela[str(anos)].append(0)
 
-list_csv(deflação(tabela),'Receita líquida de impostos das Regiões Norte_Nordeste')
+    tabela['Estado'].append(Estado)
 
-# 41 – Receita de Transferências Constitucionais e Legais da União das Regiões Norte/Nordeste, 2013 a 2019, em milhões de reais.
-tabela={'Região':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
+list_csv(tabela,'Indicador de Dependência do Sus 1 - Região Nordeste')
 
-for ano in range(2013,2020):
-    Numerador =[]
-    Denominador =[]
-    for dados in list(Apuração_Nordeste):
-        if dados['Ano'] == ano :
-            if dados['campo'] == 'RECEITA DE TRANSFERÊNCIAS CONSTITUCIONAIS E LEGAIS (II)':
-                Numerador.append(dados['Receitas_realizadas_Bimestre'])
-                Denominador.append(int(dados['População']))
 
-    tabela[str(ano)].append(sum(Numerador)/1000000)
-tabela['Região'].append('Nordeste')
+# 43 - Indicador de Dependência do Sus da Região Norte, 2013 a 2019, em milhões de reais
+tabela={'Estado':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
 
-for ano in range(2013,2020):
-    Numerador =[]
-    for dados in list(Apuração_Norte):
-        if dados['Ano'] == ano :
-            if dados['campo'] == 'RECEITA DE TRANSFERÊNCIAS CONSTITUCIONAIS E LEGAIS (II)':
-                Numerador.append(dados['Receitas_realizadas_Bimestre'])
+for Estado in ['Acre','Amapá','Amazonas','Roraima','Rondônia','Pará','Tocantins']:
+    for anos in range(2013,2020):
+        numerador=[] 
+        denominador=[]
+        for dados in Adicionais_Norte:
+            if dados['campo'] == 'Outras Receitas do SUS' and dados['Ano']==anos and dados['Estado']== Estado:
+                numerador.append(dados['Receitas_realizadas_Bimestre'])
+            elif dados['campo'] =='TOTAL RECEITAS ADICIONAIS PARA FINANCIAMENTO DA SAÚDE' and dados['Ano']==anos and dados['Estado']==Estado:
+                denominador.append(dados['Receitas_realizadas_Bimestre'])
+        try:
+            tabela[str(anos)].append(round(sum(numerador)/sum(denominador),2))
+        except:
+            tabela[str(anos)].append(0)
 
-    tabela[str(ano)].append(sum(Numerador)/1000000)
-tabela['Região'].append('Norte')
+    tabela['Estado'].append(Estado)
 
-list_csv(deflação(tabela),'Receita líquida de impostos das Regiões Norte_Nordeste')
+list_csv(tabela,'Indicador de Dependência do Sus 2 - Região Norte')
+
+
+# 44 - Indicador de Dependência do Sus da Região Nordeste, 2013 a 2019, em milhões de reais
+tabela={'Estado':[],'2013':[],'2014':[],'2015':[],'2016':[],'2017':[],'2018':[],'2019':[]}
+
+for Estado in ['Bahia','Ceará','Piauí','Maranhão','Rio Grande do Norte','Paraíba','Pernambuco','Sergipe','Alagoas']:
+    for anos in range(2013,2020):
+        numerador=[] 
+        denominador=[]
+        for dados in Adicionais_Nordeste:
+            if dados['campo'] == 'Outras Receitas do SUS' and dados['Ano']==anos and dados['Estado']== Estado:
+                numerador.append(dados['Receitas_realizadas_Bimestre'])
+            elif dados['campo'] =='TOTAL RECEITAS ADICIONAIS PARA FINANCIAMENTO DA SAÚDE' and dados['Ano']==anos and dados['Estado']==Estado:
+                denominador.append(dados['Receitas_realizadas_Bimestre'])
+        try:
+            tabela[str(anos)].append(round(sum(numerador)/sum(denominador),2))
+        except:
+            tabela[str(anos)].append(0)
+
+    tabela['Estado'].append(Estado)
+
+list_csv(tabela,'Indicador de Dependência do Sus 2 - Região Nordeste')

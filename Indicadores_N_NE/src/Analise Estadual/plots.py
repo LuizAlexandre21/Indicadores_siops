@@ -64,5 +64,5 @@ class plots:
             fig.add_trace(go.Bar(x=range_list,y=data[keys[loc]],name=keys[loc],marker={'color': str(colors[loc])}))
         fig.update_layout(title=metadata["title"],xaxis_title=metadata["xaxis_title"],yaxis_title=metadata["yaxis_title"])
         
-        pio.write_image(fig,'Graficos/'+metadata['title'] +".png" , format='png')
+        pio.write_image(fig,'Graficos/'+metadata['title'] +".png" , format='png',scale=1, width=1000, height=800)
         return fig 

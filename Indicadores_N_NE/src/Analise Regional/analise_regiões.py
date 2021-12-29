@@ -432,10 +432,8 @@ for ano in range(2013,2020):
                 Denominador.append(int(dados['População']))
 
     tabela[str(ano)].append(sum(Numerador)/sum(Denominador))
-tabela['Região'].append('Sul')
+tabela['Região'].append('Sul')                Denominador.append(int(dados['População']))
 
-# Receita Estadual Adicional - Sudeste
-for ano in range(2013,2020):
     Numerador =[]
     Denominador =[]
     for dados in list(Adicionais_Sudeste):
@@ -462,3 +460,5 @@ tabela['Região'].append('Centro-Oeste')
 
 # Exportando dados 
 list_csv(tabela,'Receita Estadual Adicional - Percapita')
+
+
